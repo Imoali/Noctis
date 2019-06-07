@@ -2,8 +2,12 @@
 
 #ifdef NT_PLATFORM_WINDOWS
 	#ifdef NT_BUILD_DLL
-		#define Noctis_API _declspec(dllexport)
+		#define NOCTIS_API _declspec(dllexport)
 	#else
-		#define Noctis_API _declspec(dllimport)
+		#define NOCTIS_API _declspec(dllimport)
 	#endif
+#else
+	#error Noctis only supports windows
 #endif
+
+#define BIT(x) (1 << x)

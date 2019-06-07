@@ -4,6 +4,9 @@
     <Filter Include="Noctis">
       <UniqueIdentifier>{B54AE2C5-A1EC-0C9C-8AA7-20F076E893EC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Noctis\Events">
+      <UniqueIdentifier>{F9382CF1-65F9-A727-2E34-F1A49AB3EC03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Noctis.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Noctis\EntryPoint.h">
       <Filter>Noctis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Noctis\Events\ApplicationEvent.h">
+      <Filter>Noctis\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Noctis\Events\Event.h">
+      <Filter>Noctis\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Noctis\Events\KeyEvent.h">
+      <Filter>Noctis\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Noctis\Events\MouseEvent.h">
+      <Filter>Noctis\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Noctis\Log.h">
       <Filter>Noctis</Filter>

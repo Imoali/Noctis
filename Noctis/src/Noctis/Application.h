@@ -4,7 +4,7 @@
 
 namespace Noctis {
 
-	class Noctis_API Application
+	class NOCTIS_API Application
 	{
 	public:
 		Application();
