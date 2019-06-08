@@ -1,3 +1,4 @@
+#include "ntpch.h"
 #include "Application.h"
 
 #include "Noctis/Events/Event.h"
@@ -8,6 +9,7 @@ namespace Noctis {
 
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window> (Window::Create());
 	}
 
 
@@ -16,10 +18,8 @@ namespace Noctis {
 	}
 
 	void Application::Run() {
-		WindowResizeEvent e(120, 720);
-		if (e.IsInCategory(EventCategoryApplication)) {
-			NT_CLIENT_TRACE(e);
-		}
-		while (true);	
+		while (m_Running) {
+			m_Window->OnUpdate();
+		};
 	}
 }

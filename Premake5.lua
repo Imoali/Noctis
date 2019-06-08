@@ -10,6 +10,12 @@ workspace "Noctis"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"]	= "Noctis/vendor/GLFW/include"
+
+include "Noctis/vendor/GLFW/"
+
 project "Noctis"
 	location "Noctis"
 	kind "SharedLib"
@@ -17,6 +23,9 @@ project "Noctis"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "ntpch.h"
+	pchsource "Noctis/src/ntpch.cpp"
 
 	files 
 	{
@@ -27,7 +36,13 @@ project "Noctis"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}",
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

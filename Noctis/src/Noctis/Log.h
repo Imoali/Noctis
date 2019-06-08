@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
@@ -26,6 +25,7 @@ namespace Noctis {
 #define NT_CORE_WARN(...)  ::Noctis::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define NT_CORE_ERROR(...) ::Noctis::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define NT_CORE_FATAL(...) ::Noctis::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+//#define NT_CORE_ASSERT(...)::Noctis::Log::GetCoreLogger()->
 
 //CLIENT LOG MACROS
 #define NT_CLIENT_TRACE(...) ::Noctis::Log::GetClientLogger()->trace(__VA_ARGS__)

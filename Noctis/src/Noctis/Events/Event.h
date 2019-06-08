@@ -2,8 +2,6 @@
 
 #include "Noctis/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace Noctis {
 
