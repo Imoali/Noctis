@@ -4,10 +4,11 @@
 extern Noctis::Application* Noctis::CreateApplication();
 int main(int argc, char** argv) {
 	Noctis::Log::Init();
-	NT_CORE_WARN("WARNING!");
-	int a = 10;
-	NT_CLIENT_INFO("Hello! {0}", a);
+	NT_CORE_INFO("Starting Noctis Engine!");
+	NT_CLIENT_INFO("Starting the application ");
 	auto app = Noctis::CreateApplication();
+	NT_CLIENT_INFO("Application created");
+	NT_CLIENT_INFO("Running the app");
 	app->Run();
 	delete app;
 	return 0;
