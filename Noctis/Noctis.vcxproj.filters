@@ -7,14 +7,10 @@
     <Filter Include="Noctis\Events">
       <UniqueIdentifier>{F9382CF1-65F9-A727-2E34-F1A49AB3EC03}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{0ea168fa-6daf-4337-9257-652a8d2ebb30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{56ead99d-e771-4075-aeb1-4f19f557b9f0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Layer.h" />
+    <ClInclude Include="src\LayerStack.h" />
     <ClInclude Include="src\Noctis.h" />
     <ClInclude Include="src\Noctis\Application.h">
       <Filter>Noctis</Filter>
@@ -40,24 +36,20 @@
     <ClInclude Include="src\Noctis\Log.h">
       <Filter>Noctis</Filter>
     </ClInclude>
+    <ClInclude Include="src\WindowsWindow.h" />
     <ClInclude Include="src\ntpch.h" />
-    <ClInclude Include="window.h">
-      <Filter>Noctis</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
-    </ClInclude>
+    <ClInclude Include="src\window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Layer.cpp" />
+    <ClCompile Include="src\LayerStack.cpp" />
     <ClCompile Include="src\Noctis\Application.cpp">
       <Filter>Noctis</Filter>
     </ClCompile>
     <ClCompile Include="src\Noctis\Log.cpp">
       <Filter>Noctis</Filter>
     </ClCompile>
+    <ClCompile Include="src\WindowsWindow.cpp" />
     <ClCompile Include="src\ntpch.cpp" />
-    <ClCompile Include="WindowsWindow.cpp">
-      <Filter>Platform\Windows</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

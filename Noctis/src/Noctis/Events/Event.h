@@ -43,7 +43,7 @@ namespace Noctis {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-	protected:
+	//protected:
 		bool m_handled = false;
 	};
 

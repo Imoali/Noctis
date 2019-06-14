@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Noctis/Application.h"
+#include "Layer.h"
 #include "Noctis/log.h"
 
 //---------ENTRY POINT---------

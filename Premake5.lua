@@ -64,14 +64,17 @@ project "Noctis"
 
 	filter "configurations:Debug"
 		defines "NT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NT_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "NT_DIST"
+		buildoptions "/MD"
 		symbols "On"
 
 
@@ -112,12 +115,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "NT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NT_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "NT_DIST"
+		buildoptions "/MD"
 		symbols "On"
