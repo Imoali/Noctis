@@ -7,6 +7,15 @@
     <Filter Include="Noctis\Events">
       <UniqueIdentifier>{F9382CF1-65F9-A727-2E34-F1A49AB3EC03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Noctis\ImGui">
+      <UniqueIdentifier>{9F33E75C-8B96-7601-341C-AFB7205E4284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Layer.h" />
@@ -33,8 +42,14 @@
     <ClInclude Include="src\Noctis\Events\MouseEvent.h">
       <Filter>Noctis\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Noctis\ImGui\ImGuiLayer.h">
+      <Filter>Noctis\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Noctis\Log.h">
       <Filter>Noctis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\WindowsWindow.h" />
     <ClInclude Include="src\ntpch.h" />
@@ -46,8 +61,14 @@
     <ClCompile Include="src\Noctis\Application.cpp">
       <Filter>Noctis</Filter>
     </ClCompile>
+    <ClCompile Include="src\Noctis\ImGui\ImGuiLayer.cpp">
+      <Filter>Noctis\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Noctis\Log.cpp">
       <Filter>Noctis</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\WindowsWindow.cpp" />
     <ClCompile Include="src\ntpch.cpp" />

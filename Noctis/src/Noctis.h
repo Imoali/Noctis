@@ -5,6 +5,7 @@
 #include "Noctis/Application.h"
 #include "Layer.h"
 #include "Noctis/log.h"
+#include "Noctis/ImGui/ImGuiLayer.h"
 
 //---------ENTRY POINT---------
 #include "Noctis/EntryPoint.h"

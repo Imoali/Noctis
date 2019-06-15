@@ -45,7 +45,9 @@ namespace Noctis {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
+		NT_CORE_ASSERT(status,"failed to initialize!")
 		SetVSync(true);
 
 		//set glfw callbacks

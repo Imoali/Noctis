@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"]	= "Noctis/vendor/GLFW/include"
+IncludeDir["Glad"]	= "Noctis/vendor/Glad/include"
+IncludeDir["imgui"]	= "Noctis/vendor/imgui"
 
 include "Noctis/vendor/GLFW/"
+include "Noctis/vendor/Glad/"
+include "Noctis/vendor/imgui/"
 
 project "Noctis"
 	location "Noctis"
@@ -38,10 +42,14 @@ project "Noctis"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imgui}"
 	}
 
 	links {
 		"GLFW",
+		"Glad",
+		"imgui",
 		"opengl32.lib"
 	}
 
