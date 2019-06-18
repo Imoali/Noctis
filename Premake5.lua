@@ -7,6 +7,8 @@ workspace "Noctis"
 		"Release",
 		"Dist"
 	}
+	
+	startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -19,6 +21,7 @@ IncludeDir["imgui"]	= "Noctis/vendor/imgui"
 include "Noctis/vendor/GLFW/"
 include "Noctis/vendor/Glad/"
 include "Noctis/vendor/imgui/"
+
 
 project "Noctis"
 	location "Noctis"
@@ -55,7 +58,7 @@ project "Noctis"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "off"
 		systemversion "latest"
 
 	defines 
@@ -72,17 +75,17 @@ project "Noctis"
 
 	filter "configurations:Debug"
 		defines "NT_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NT_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "NT_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
 
 
@@ -112,7 +115,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "off"
 		systemversion "latest"
 
 	defines 
@@ -123,15 +126,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "NT_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NT_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "NT_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		symbols "On"

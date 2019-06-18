@@ -49,7 +49,7 @@ namespace Noctis {
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		NT_CORE_ASSERT(status,"failed to initialize!")
 		SetVSync(true);
-
+		
 		//set glfw callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window,int width,int height) {
 			WindowData data = *((WindowData*)glfwGetWindowUserPointer(window));
@@ -84,6 +84,12 @@ namespace Noctis {
 					break;
 				}
 			}
+		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode){
+			WindowData data = *((WindowData*)glfwGetWindowUserPointer(window));
+			KeyTypedEvent e(keycode);
+			data.EventCallback(e);
 		});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {

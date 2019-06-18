@@ -33,6 +33,21 @@ namespace Noctis {
 		int m_RepeatCount;
 	};	
 
+	class NOCTIS_API KeyTypedEvent : public KeyEvent {
+	public:
+		//the class constructor uses a keycode and a repeat coounter
+		KeyTypedEvent(int keycode) : KeyEvent(keycode) {}
+		//repeat count getter
+		//return the string representation of the event 
+		std::string ToString() const override {
+			std::stringstream ss;
+			ss << "KeyTypedEvent:" << m_KeyCode ;
+			return ss.str();
+		}
+		//macro used to get the event type
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
+
 	class NOCTIS_API KeyReleasedEvent : public KeyEvent {
 	public:
 		//the class constructor uses a keycode 
