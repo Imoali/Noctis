@@ -16,8 +16,8 @@
 
 
 #ifdef NT_ENABLE_ASSERTS
-	#define NT_CORE_ASSERT(x, ...) {if(!x) {NT_CORE_ERROR("Assertion Failed: {0}", _VA_ARGS_); _debugbreak();}}
-	#define NT_CLIENT_ASSERT(x, ...) {if(!x) {NT_CLIENT_ERROR("Assertion Failed: {0}", _VA_ARGS_); _debugbreak();}}
+	#define NT_CORE_ASSERT(x, ...) {if(!x) {NT_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}
+	#define NT_CLIENT_ASSERT(x, ...) {if(!x) {NT_CLIENT_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak();}}
 #else
 	#define NT_CORE_ASSERT(x, ...)
 	#define NT_CLIENT_ASSERT(x, ...)

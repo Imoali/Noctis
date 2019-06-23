@@ -5,7 +5,7 @@
 #include "Noctis/Events/ApplicationEvent.h"
 #include "Noctis/Log.h"
 #include "GLFW/glfw3.h"
-
+#include "Input.h"
 
 namespace Noctis {
 
@@ -54,6 +54,8 @@ namespace Noctis {
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
 			}
+			auto[x, y] = Input::GetMousePos();
+			NT_CORE_TRACE("{0}, {1}", x, y);
 			//update window
 			m_Window->OnUpdate();
 		};

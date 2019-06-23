@@ -38,7 +38,7 @@ namespace Noctis {
 		if (!s_GLFWInitialized) {
 			//TODO glfw terminate on system shutdown
 			int success = glfwInit();
-			NT_CORE_ASSERT( succes, "Could Not Initialize GLFW!");
+			NT_CORE_ASSERT( success, "Could Not Initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
@@ -139,5 +139,9 @@ namespace Noctis {
 
 	bool WindowsWindow::IsVSync() const {
 		return m_Data.VSync;
+	}
+	void * WindowsWindow::GetNativeWindow() const
+	{
+		return m_Window;
 	}
 }

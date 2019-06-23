@@ -1,6 +1,6 @@
 #pragma once
 
-#include "window.h"
+#include "Noctis/window.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -22,7 +22,7 @@ namespace Noctis {
 		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
-
+		virtual void* GetNativeWindow() const override;
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
