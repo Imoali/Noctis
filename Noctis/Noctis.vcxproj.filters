@@ -71,6 +71,8 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\ntpch.h" />
+    <ClInclude Include="src\Noctis\Keycodes.h" />
+    <ClInclude Include="src\Noctis\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Noctis\Application.cpp">

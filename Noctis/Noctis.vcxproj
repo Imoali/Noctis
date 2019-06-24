@@ -151,9 +151,11 @@
     <ClInclude Include="src\Noctis\Events\MouseEvent.h" />
     <ClInclude Include="src\Noctis\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Noctis\Input.h" />
+    <ClInclude Include="src\Noctis\Keycodes.h" />
     <ClInclude Include="src\Noctis\Layer.h" />
     <ClInclude Include="src\Noctis\LayerStack.h" />
     <ClInclude Include="src\Noctis\Log.h" />
+    <ClInclude Include="src\Noctis\MouseButtonCodes.h" />
     <ClInclude Include="src\Noctis\window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
