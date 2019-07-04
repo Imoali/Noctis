@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"]	= "Noctis/vendor/GLFW/include"
 IncludeDir["Glad"]	= "Noctis/vendor/Glad/include"
 IncludeDir["imgui"]	= "Noctis/vendor/imgui"
+IncludeDir["glm"]	= "Noctis/vendor/glm"
 
 include "Noctis/vendor/GLFW/"
 include "Noctis/vendor/Glad/"
@@ -46,6 +47,7 @@ project "Noctis"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
+		"%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}"
 	}
 
@@ -106,6 +108,7 @@ project "Sandbox"
 	includedirs
 	{
 		"Noctis/vendor/spdlog/include",
+		"%{IncludeDir.glm}",
 		"Noctis/src"
 	}
 

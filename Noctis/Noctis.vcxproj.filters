@@ -49,6 +49,9 @@
     <ClInclude Include="src\Noctis\Input.h">
       <Filter>Noctis</Filter>
     </ClInclude>
+    <ClInclude Include="src\Noctis\Keycodes.h">
+      <Filter>Noctis</Filter>
+    </ClInclude>
     <ClInclude Include="src\Noctis\Layer.h">
       <Filter>Noctis</Filter>
     </ClInclude>
@@ -56,6 +59,9 @@
       <Filter>Noctis</Filter>
     </ClInclude>
     <ClInclude Include="src\Noctis\Log.h">
+      <Filter>Noctis</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Noctis\MouseButtonCodes.h">
       <Filter>Noctis</Filter>
     </ClInclude>
     <ClInclude Include="src\Noctis\window.h">
@@ -71,8 +77,6 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\ntpch.h" />
-    <ClInclude Include="src\Noctis\Keycodes.h" />
-    <ClInclude Include="src\Noctis\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Noctis\Application.cpp">

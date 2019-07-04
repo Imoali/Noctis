@@ -7,3 +7,6 @@
 [submodule "Noctis/vendor/imgui"]
 	path = Noctis/vendor/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "Noctis\\vendor\\glm"]
+	path = Noctis\\vendor\\glm
+	url = https://github.com/g-truc/glm
