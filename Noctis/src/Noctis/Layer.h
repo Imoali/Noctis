@@ -1,7 +1,7 @@
 #pragma once
+
 #include "Noctis/Core.h"
 #include "Noctis/events/Event.h"
-#include "ntpch.h"
 
 namespace Noctis {
 
@@ -14,6 +14,7 @@ namespace Noctis {
 		virtual void OnAttach(){}
 		virtual void OnDetach(){}
 		virtual void OnUpdate(){}
+		virtual void OnImGuiRender(){}
 		virtual void OnEvent(Event& event) {}
 
 		inline const std::string& GetName() const { return m_DebugName; };

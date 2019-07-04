@@ -7,6 +7,8 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
+#include "Noctis/ImGui/ImGuiLayer.h"
+
 namespace Noctis {
 
 	class NOCTIS_API Application
@@ -25,6 +27,7 @@ namespace Noctis {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

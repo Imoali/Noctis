@@ -157,18 +157,17 @@
     <ClInclude Include="src\Noctis\Log.h" />
     <ClInclude Include="src\Noctis\MouseButtonCodes.h" />
     <ClInclude Include="src\Noctis\window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\ntpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Noctis\Application.cpp" />
+    <ClCompile Include="src\Noctis\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Noctis\Layer.cpp" />
     <ClCompile Include="src\Noctis\LayerStack.cpp" />
     <ClCompile Include="src\Noctis\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\ntpch.cpp">
@@ -189,4 +188,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>
+</Project> 

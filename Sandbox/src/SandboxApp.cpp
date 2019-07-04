@@ -24,7 +24,6 @@ class Sandbox : public Noctis::Application {
 public:
 	Sandbox(){
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Noctis::ImGuiLayer());
 	}
 	~Sandbox(){
 	}
