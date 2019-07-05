@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include "Noctis/Core.h"
+#include "Noctis/Log.h"
 
 #ifdef NT_PLATFORM_WINDOWS
 	#include <Windows.h>

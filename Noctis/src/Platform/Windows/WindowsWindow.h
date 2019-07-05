@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Noctis/window.h"
-#include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Noctis/Renderer/GraphicsContext.h"
 
 namespace Noctis {
 
@@ -28,6 +28,7 @@ namespace Noctis {
 		virtual void Shutdown();
 
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 		struct WindowData {
 			unsigned int Width;
 			unsigned int Height;

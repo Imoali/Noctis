@@ -140,6 +140,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Noctis\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Noctis.h" />
     <ClInclude Include="src\Noctis\Application.h" />
     <ClInclude Include="src\Noctis\Core.h" />
@@ -525,6 +527,8 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Noctis\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Noctis\Application.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiLayer.cpp" />
