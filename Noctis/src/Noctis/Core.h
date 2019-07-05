@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef NT_PLATFORM_WINDOWS
-	#ifdef NT_BUILD_DLL
-		#define NOCTIS_API _declspec(dllexport)
+	#if HZ_DYNAMIC_LINK
+		#ifdef NT_BUILD_DLL
+			#define NOCTIS_API _declspec(dllexport)
+		#else
+			#define NOCTIS_API _declspec(dllimport)
+		#endif
 	#else
-		#define NOCTIS_API _declspec(dllimport)
+		#define NOCTIS_API
 	#endif
 #else
 	#error Noctis only supports windows

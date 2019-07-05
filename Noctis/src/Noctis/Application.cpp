@@ -1,8 +1,8 @@
 #include "ntpch.h"
 #include "Application.h"
 #include "Noctis/Log.h"
-#include "glad/glad.h"
 #include "Input.h"
+#include "glad/glad.h"
 
 namespace Noctis {
 

@@ -26,8 +26,10 @@ include "Noctis/vendor/imgui/"
 
 project "Noctis"
 	location "Noctis"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -38,7 +40,14 @@ project "Noctis"
 	files 
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+	
+	defines 
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -59,42 +68,38 @@ project "Noctis"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "off"
 		systemversion "latest"
 
-	defines 
-	{
-		"NT_PLATFORM_WINDOWS",
-		"NT_BUILD_DLL",
-		"_WINDLL"
-	}
+		defines 
+		{
+			"NT_PLATFORM_WINDOWS",
+			"NT_BUILD_DLL",
+			"_WINDLL"
+		}
 
-	postbuildcommands
-	{
-		{"{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/sandbox"}
-	}
 
 	filter "configurations:Debug"
 		defines "NT_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "NT_RELEASE"
 		runtime "Release"
-		symbols "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "NT_DIST"
 		runtime "Release"
-		symbols "On"
+		optimize "on"
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
-	language "C++"
+	language "C++"		
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -109,6 +114,7 @@ project "Sandbox"
 	{
 		"Noctis/vendor/spdlog/include",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.imgui}",
 		"Noctis/src"
 	}
 
@@ -117,8 +123,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "off"
 		systemversion "latest"
 
 	defines 
@@ -130,14 +134,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "NT_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "NT_RELEASE"
 		runtime "Release"
-		symbols "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "NT_DIST"
 		runtime "Release"
-		symbols "On"
+		optimize "on"
