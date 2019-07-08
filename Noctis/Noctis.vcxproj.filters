@@ -1193,6 +1193,7 @@
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Noctis\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Noctis\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Noctis\Application.cpp">
@@ -1224,5 +1225,6 @@
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Noctis\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

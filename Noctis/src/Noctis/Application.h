@@ -8,6 +8,7 @@
 #include "Events/ApplicationEvent.h"
 
 #include "Noctis/ImGui/ImGuiLayer.h"
+#include "Noctis/Renderer/Shader.h"
 
 namespace Noctis {
 
@@ -30,6 +31,9 @@ namespace Noctis {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		//needed for OpenGL rendering
+		unsigned int m_VertexBuffer, m_IndexBuffer, m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
