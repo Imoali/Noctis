@@ -1,9 +1,9 @@
 #include "ntpch.h"
+#include "Application.h"
 #include "Noctis/Log.h"
 #include "Input.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
-#include "Application.h"
 
 namespace Noctis {
 
@@ -33,19 +33,8 @@ namespace Noctis {
 
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		BufferLayout layout = {
-			{ShaderDataType::Float3, "a_Position"},
-		};
-		
-		uint32_t index = 0;
-		for (const auto& element : layout) {
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, element.GetComponentCount(), GL_FLOAT, GL_FALSE, sizeof(float) * 3, nullptr);
-			index++;
-		}
-
-		m_VertexBuffer->SetLayout(layout);
-
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*3, nullptr);
 
 		unsigned int indices[] = { 0, 1, 2 };
 
