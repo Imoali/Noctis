@@ -140,12 +140,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Noctis\Renderer\Buffer.h" />
-    <ClInclude Include="src\Noctis\Renderer\Renderer.h" />
-    <ClInclude Include="src\Noctis\Renderer\Shader.h" />
-    <ClInclude Include="src\Noctis\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Noctis.h" />
     <ClInclude Include="src\Noctis\Application.h" />
     <ClInclude Include="src\Noctis\Core.h" />
@@ -161,7 +155,13 @@
     <ClInclude Include="src\Noctis\LayerStack.h" />
     <ClInclude Include="src\Noctis\Log.h" />
     <ClInclude Include="src\Noctis\MouseButtonCodes.h" />
+    <ClInclude Include="src\Noctis\Renderer\Buffer.h" />
+    <ClInclude Include="src\Noctis\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Noctis\Renderer\Renderer.h" />
+    <ClInclude Include="src\Noctis\Renderer\Shader.h" />
     <ClInclude Include="src\Noctis\window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\ntpch.h" />
@@ -531,18 +531,18 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Noctis\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Noctis\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Noctis\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Noctis\Renderer\GraphicsContext.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Noctis\Application.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Noctis\Layer.cpp" />
     <ClCompile Include="src\Noctis\LayerStack.cpp" />
     <ClCompile Include="src\Noctis\Log.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\ntpch.cpp">
