@@ -11,25 +11,6 @@ namespace Noctis {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) {
-		switch (type)
-		{
-			case Noctis::ShaderDataType::Float: return GL_FLOAT;
-			case Noctis::ShaderDataType::Float2:return GL_FLOAT;
-			case Noctis::ShaderDataType::Float3:return GL_FLOAT;
-			case Noctis::ShaderDataType::Float4:return GL_FLOAT;
-			case Noctis::ShaderDataType::Int:	return GL_INT;
-			case Noctis::ShaderDataType::Int2:	return GL_INT;
-			case Noctis::ShaderDataType::Int3:	return GL_INT;
-			case Noctis::ShaderDataType::Int4:	return GL_INT;
-			case Noctis::ShaderDataType::Mat3:  return GL_FLOAT;
-			case Noctis::ShaderDataType::Mat4:  return GL_FLOAT;
-			case Noctis::ShaderDataType::Bool:	return GL_BOOL;
-		}
-		NT_CORE_ASSERT(false, "SHader data type is unknown!");
-		return 0;
-	};
-
 	Application::Application()
 	{
 		NT_CORE_ASSERT(!s_Instance, "Failed only One Instance of app should exist!")
@@ -40,9 +21,16 @@ namespace Noctis {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-		//OPENGL RENDERING TRIANGLE
-		glGenVertexArrays(0, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
+		
+		//----------OPENGL RENDERING TRIANGLE
+		
+		m_VertexArray.reset(VertexArray::Create());
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+
+		m_SquareVertexArray.reset(VertexArray::Create());   //-------SQUARE
+		std::shared_ptr<VertexBuffer> m_SquareVertexBuffer; //-------SQUARE
+		std::shared_ptr<IndexBuffer> m_SquareIndexBuffer;	//-------SQUARE
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
@@ -50,31 +38,40 @@ namespace Noctis {
 			 0.0f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f
 		};
 
+		float squareVertices[3 * 4] = {
+			-0.5f, -0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f
+		};
+
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		{
-			BufferLayout layout = {
-						{ShaderDataType::Float3, "a_Position"},
-						{ShaderDataType::Float4, "a_Color"},
-			};
-			m_VertexBuffer->SetLayout(layout);
-		}
+		m_SquareVertexBuffer.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
-		uint32_t index = 0;
-		const auto& layout = m_VertexBuffer->GetLayout();
-		for (const auto& element : layout) {
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index, element.GetComponentCount(), 
-				ShaderDataTypeToOpenGLBaseType(element.m_Type), 
-				element.m_Normalized ? GL_TRUE : GL_FALSE, 
-				layout.GetStride(), (const void*)element.m_Offset);
-			index++;
-		}
+		BufferLayout layout = {
+					{ShaderDataType::Float3, "a_Position"},
+					{ShaderDataType::Float4, "a_Color"},
+		};
 
+		BufferLayout squareLayout = {
+			{ShaderDataType::Float3, "a_Position"},
+		};
+
+		m_VertexBuffer->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+
+		m_SquareVertexBuffer->SetLayout(squareLayout);
+		m_SquareVertexArray->AddVertexBuffer(m_SquareVertexBuffer);
 
 		unsigned int indices[] = { 0, 1, 2 };
-
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-	
+
+		unsigned int squareIndices[] = { 0, 1, 2 , 2, 3, 0};
+		m_SquareIndexBuffer.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+		m_SquareVertexArray->SetIndexBuffer(m_SquareIndexBuffer);
+
 		std::string vertexSrc = R"(
 			#version 330 core
 			layout(location = 0) in vec3 a_Position;
@@ -97,7 +94,24 @@ namespace Noctis {
 			} 
 		)";
 
+		std::string squareVertexSrc = R"(
+			#version 330 core
+			layout(location = 0) in vec3 a_Position;
+			void main(){
+				gl_Position = vec4(a_Position, 1.0); 
+			}
+		)";
+
+		std::string squareFragmentSrc = R"(
+			#version 330 core
+			layout (location = 0) out vec4 FragColor;  
+			void main()
+			{
+				FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+			} 
+		)";
 		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
+		m_SquareShader.reset(new Shader(squareVertexSrc, squareFragmentSrc));
 	}
 
 	Application::~Application()
@@ -130,9 +144,13 @@ namespace Noctis {
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			m_SquareShader->Bind();
+			m_SquareVertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_VertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 			//update layers
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();

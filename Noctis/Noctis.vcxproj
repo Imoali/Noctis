@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Noctis.h" />
     <ClInclude Include="src\Noctis\Application.h" />
     <ClInclude Include="src\Noctis\Core.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\Noctis\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Noctis\Renderer\Renderer.h" />
     <ClInclude Include="src\Noctis\Renderer\Shader.h" />
+    <ClInclude Include="src\Noctis\Renderer\VertexArray.h" />
     <ClInclude Include="src\Noctis\window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -531,6 +533,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Noctis\Application.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiLayer.cpp" />
@@ -541,6 +544,7 @@
     <ClCompile Include="src\Noctis\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Noctis\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Noctis\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
