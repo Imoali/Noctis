@@ -140,6 +140,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Noctis\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Noctis\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Noctis.h" />
     <ClInclude Include="src\Noctis\Application.h" />
@@ -533,6 +536,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Noctis\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Noctis\Application.cpp" />
     <ClCompile Include="src\Noctis\ImGui\ImGuiBuild.cpp" />

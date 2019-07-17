@@ -7,12 +7,12 @@ namespace Noctis {
 	VertexArray * VertexArray::Create()
 	{
 		switch (Renderer::GetAPI()) {
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 		{
 			NT_CORE_ASSERT(false, "Renderer API isn't set!");
 			return nullptr;
 		}
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 		{
 			return new OpenGLVertexArray();
 		}
