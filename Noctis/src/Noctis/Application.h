@@ -12,6 +12,8 @@
 #include "Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
 
+#include "Noctis/Renderer/OrthographicCamera.h"
+
 namespace Noctis {
 
 	class NOCTIS_API Application
@@ -39,6 +41,8 @@ namespace Noctis {
 
 		std::shared_ptr<Shader> m_SquareShader;					//-------SQUARE
 		std::shared_ptr<VertexArray> m_SquareVertexArray;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

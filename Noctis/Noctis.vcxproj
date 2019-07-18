@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Noctis\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Noctis\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Noctis\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -536,6 +537,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Noctis\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Noctis\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Noctis\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />

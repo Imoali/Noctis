@@ -1220,6 +1220,7 @@
     <ClInclude Include="src\Noctis\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Noctis\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Noctis\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Noctis\Application.cpp">
@@ -1272,5 +1273,6 @@
     <ClCompile Include="src\Noctis\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Noctis\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Noctis\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
