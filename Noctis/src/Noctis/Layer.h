@@ -2,7 +2,7 @@
 
 #include "Noctis/Core.h"
 #include "Noctis/events/Event.h"
-
+#include "Noctis/Core/Timestep.h"
 namespace Noctis {
 
 	class NOCTIS_API Layer
@@ -13,7 +13,7 @@ namespace Noctis {
 
 		virtual void OnAttach(){}
 		virtual void OnDetach(){}
-		virtual void OnUpdate(){}
+		virtual void OnUpdate(Timestep ts){}
 		virtual void OnImGuiRender(){}
 		virtual void OnEvent(Event& event) {}
 

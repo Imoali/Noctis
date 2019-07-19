@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Noctis\Core\Timestep.h" />
     <ClInclude Include="src\Noctis\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Noctis\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Noctis\Renderer\RendererAPI.h" />

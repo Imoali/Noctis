@@ -10,6 +10,8 @@
 #include "Noctis/log.h"
 #include "Noctis/ImGui/ImGuiLayer.h"
 
+#include "Noctis/Core/Timestep.h"
+
 //--------   RENDERER  ---------
 #include "Noctis/Renderer/Renderer.h"
 #include "Noctis/Renderer/RenderCommand.h"

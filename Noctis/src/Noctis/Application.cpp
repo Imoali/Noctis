@@ -4,6 +4,9 @@
 #include "Input.h"
 
 #include "Noctis/Renderer/Renderer.h"
+#include "Noctis/Core/Timestep.h"
+
+#include "GLFW/glfw3.h" // TODO: this is temporary 
 
 namespace Noctis {
 
@@ -49,9 +52,13 @@ namespace Noctis {
 
 	void Application::Run() {
 		while (m_Running) {
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			//update layers
 			for (Layer* layer : m_LayerStack) {
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->begin();
