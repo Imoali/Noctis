@@ -1,7 +1,6 @@
 #include <Noctis.h>
 #include "imgui.h"
 
-
 class ExampleLayer : public Noctis::Layer {
 public:
 	ExampleLayer()
@@ -63,11 +62,12 @@ public:
 			layout(location = 1) in vec4 a_Color;
 			
 			uniform mat4 u_ViewProjection;			
+			uniform mat4 u_Transform;			
 
 			out vec4 v_Color;
 			void main(){
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0); 
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0); 
 			}
 		)";
 
@@ -86,41 +86,40 @@ public:
 			#version 330 core
 			layout(location = 0) in vec3 a_Position;
 			uniform mat4 u_ViewProjection;			
+			uniform mat4 u_Transform;			
 
 			void main(){
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0); 
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0); 
 			}
 		)";
 
 		std::string squareFragmentSrc = R"(
 			#version 330 core
-			layout (location = 0) out vec4 FragColor;  
+			layout (location = 0) out vec4 FragColor; 
+			uniform vec4 u_Color;
 			void main()
 			{
-				FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+				FragColor = u_Color;
 			} 
 		)";
-		m_Shader.reset(new Noctis::Shader(vertexSrc, fragmentSrc));
-		m_SquareShader.reset(new Noctis::Shader(squareVertexSrc, squareFragmentSrc));
+		m_Shader.reset(Noctis::Shader::Create(vertexSrc, fragmentSrc));
+		m_SquareShader.reset(Noctis::Shader::Create(squareVertexSrc, squareFragmentSrc));
 	};
 
 	void OnUpdate(Noctis::Timestep ts) override {
 
 		if (Noctis::Input::IsKeyPressed( NT_KEY_LEFT))
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-
 		else if (Noctis::Input::IsKeyPressed(NT_KEY_RIGHT))
 			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
 		if (Noctis::Input::IsKeyPressed(NT_KEY_DOWN))
 			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
 		else if (Noctis::Input::IsKeyPressed(NT_KEY_UP))
 			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 		
 		if (Noctis::Input::IsKeyPressed(NT_KEY_A))
 			m_CameraRotation += m_CameraRotationSpeed * ts;
-		
 		else if (Noctis::Input::IsKeyPressed(NT_KEY_E))
 			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
@@ -129,17 +128,28 @@ public:
 
 		m_Camera.SetPostion(m_CameraPosition);
 		m_Camera.SetRotation(m_CameraRotation);
-
 		Noctis::Renderer::BeginScene(m_Camera);
-
-		Noctis::Renderer::Submit(m_SquareShader, m_SquareVertexArray);
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		for (int i = 0; i < 10; ++i) {
+			glm::vec3 position = { i * 0.11f, 0.0f, 0.0f};
+			glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * scale;
+			std::dynamic_pointer_cast<Noctis::OpenGLShader>(m_SquareShader)->UploadUniformVec4("u_Color", glm::vec4(s_RGBColor, 1.0f));
+			Noctis::Renderer::Submit(m_SquareShader, m_SquareVertexArray, transform);
+		}
 		Noctis::Renderer::Submit(m_Shader, m_VertexArray);
-
 		Noctis::Renderer::EndScene();
 	}
 
 	void OnImGuiRender() override {
-
+		ImGui::Begin("Material");
+		ImGui::Text("Material Settings");
+		ImGui::Separator();
+		ImGui::Separator();
+		if (ImGui::CollapsingHeader("Albedo")) {
+			ImGui::ColorPicker3("Albedo", value_ptr(s_RGBColor));
+		}
+		ImGui::Separator();
+		ImGui::End();
 	}
 
 	void OnEvent(Noctis::Event& event) override {
@@ -161,6 +171,7 @@ private:
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 10.0f;
 
+	glm::vec3 s_RGBColor = glm::vec3(1.0f, 1.0f, 1.0f);
 };
 
 class Sandbox : public Noctis::Application {

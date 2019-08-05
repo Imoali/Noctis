@@ -22,5 +22,8 @@
 
 #include "Noctis/Renderer/OrthographicCamera.h"
 
+//--------   PLATFORM  ---------
+#include "Platform/OpenGL/OpenGLShader.h"
+
 //---------ENTRY POINT---------
 #include "Noctis/EntryPoint.h"
