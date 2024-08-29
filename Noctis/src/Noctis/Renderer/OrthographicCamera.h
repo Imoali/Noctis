@@ -11,7 +11,7 @@ namespace Noctis {
 		const glm::vec3& GetPosition() const { return m_Position; };
 		float GetRotation() const { return m_Rotation; };
 		
-		void SetPostion(const glm::vec3& position) { m_Position = position;  RecalculateViewMatrix(); };
+		void SetPosition(const glm::vec3& position) { m_Position = position;  RecalculateViewMatrix(); };
 		void SetRotation(const float& rotation) { m_Rotation = rotation;  RecalculateViewMatrix(); };
 	
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix;  };
