@@ -19,6 +19,7 @@
 #include "Noctis/Renderer/Buffer.h"
 #include "Noctis/Renderer/Shader.h"
 #include "Noctis/Renderer/VertexArray.h"
+#include "Noctis/Renderer/Texture.h"
 
 #include "Noctis/Renderer/OrthographicCamera.h"
 
